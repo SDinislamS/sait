@@ -4,14 +4,31 @@ const burger = document.querySelector('.menu-icon');
 const menu = document.querySelector('.menu');
 const body = document.body
 
+// Получаем ссылки в меню
+const menuLinks = document.querySelectorAll('.menu__link');
+
+// Функция, которая будет закрывать меню
+function closeMenu() {
+	burger.classList.remove('_active');
+	menu.classList.remove('_active');
+	body.classList.remove('_lock');
+}
+
+// Добавляем обработчик события на каждую ссылку
+menuLinks.forEach((link) => {
+	link.addEventListener('click', () => {
+		closeMenu();
+	});
+});
+
+// Добавляем обработчик на бургер-кнопку
 if (burger && menu) {
 	burger.addEventListener('click', () => {
 		burger.classList.toggle('_active');
 		menu.classList.toggle('_active');
 		body.classList.toggle('_lock');
-	})
+	});
 }
-
 //---Swiper
 
 const popularSlider = new Swiper('.popular-slider', {
